@@ -1,0 +1,383 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f6fa;
+    color: #222;
+    min-height: 100vh;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    width: 100%;
+    background: #ffffff;
+    padding: 18px 50px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 700;
+    color: #222;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #444;
+    font-size: 14px;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.nav-links a:hover {
+    color: #000;
+}
+
+.logout {
+    background: #222;
+    color: #fff !important;
+
+    padding: 9px 17px;
+    border-radius: 7px;
+}
+
+.logout:hover {
+    background: #000;
+}
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container {
+    width: 90%;
+    max-width: 1050px;
+
+    margin: 55px auto;
+}
+
+
+/* =========================
+   PAGE TITLE
+========================= */
+
+.page-title {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.page-title h1 {
+    font-size: 31px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #222;
+}
+
+.page-title p {
+    color: #888;
+    font-size: 15px;
+}
+
+
+/* =========================
+   PORTFOLIO CARD
+========================= */
+
+.portfolio-card {
+    width: 100%;
+    max-width: 520px;
+
+    margin: 0 auto;
+    padding: 42px 35px 35px;
+
+    background: #ffffff;
+
+    border: 1px solid #eeeeee;
+    border-radius: 20px;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.07);
+
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.10);
+}
+
+
+/* =========================
+   PROFILE PICTURE
+========================= */
+
+.profile-picture {
+    width: 145px;
+    height: 145px;
+
+    margin: 0 auto 23px;
+
+    border-radius: 50%;
+    overflow: hidden;
+
+    background: #f0f0f0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 5px solid #ffffff;
+
+    box-shadow:
+        0 4px 18px rgba(0, 0, 0, 0.12);
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+.default-profile {
+    font-size: 55px;
+    color: #888;
+}
+
+
+/* =========================
+   APPLICANT INFORMATION
+========================= */
+
+.portfolio-info h2 {
+    font-size: 26px;
+    font-weight: 700;
+
+    margin-bottom: 9px;
+
+    color: #222;
+}
+
+.email {
+    color: #777;
+    font-size: 15px;
+
+    margin-bottom: 16px;
+}
+
+.template {
+    display: inline-block;
+
+    color: #666;
+
+    background: #f5f5f5;
+
+    padding: 7px 14px;
+
+    border-radius: 20px;
+
+    font-size: 14px;
+
+    margin-bottom: 28px;
+}
+
+.template strong {
+    color: #222;
+    font-weight: 600;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.portfolio-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+
+    padding-top: 5px;
+}
+
+.btn {
+    min-width: 95px;
+
+    padding: 11px 20px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition:
+        transform 0.15s ease,
+        opacity 0.15s ease,
+        background 0.15s ease;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.btn-view {
+    background: #222;
+    color: #ffffff;
+}
+
+.btn-view:hover {
+    background: #000;
+}
+
+.btn-edit {
+    background: #eeeeee;
+    color: #222;
+}
+
+.btn-edit:hover {
+    background: #e2e2e2;
+}
+
+.btn-delete {
+    background: #dc3545;
+    color: #ffffff;
+}
+
+.btn-delete:hover {
+    background: #c82333;
+}
+
+
+/* =========================
+   NO PORTFOLIO
+========================= */
+
+.no-portfolio {
+    max-width: 500px;
+
+    margin: 0 auto;
+    padding: 45px 35px;
+
+    background: #ffffff;
+
+    border: 1px solid #eeeeee;
+    border-radius: 18px;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.07);
+}
+
+.no-portfolio h2 {
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.no-portfolio p {
+    color: #777;
+    margin-bottom: 22px;
+}
+
+.create-btn {
+    display: inline-block;
+
+    padding: 12px 23px;
+
+    background: #222;
+    color: #ffffff;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    font-weight: 600;
+}
+
+.create-btn:hover {
+    background: #000;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .logo {
+        font-size: 20px;
+    }
+
+    .nav-links {
+        gap: 10px;
+    }
+
+    .nav-links a:not(.logout) {
+        display: none;
+    }
+
+    .container {
+        width: 94%;
+        margin: 35px auto;
+    }
+
+    .page-title h1 {
+        font-size: 27px;
+    }
+
+    .portfolio-card {
+        padding: 35px 20px 25px;
+    }
+
+    .profile-picture {
+        width: 130px;
+        height: 130px;
+    }
+
+    .portfolio-info h2 {
+        font-size: 23px;
+    }
+
+    .portfolio-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .portfolio-actions .btn {
+        width: 100%;
+    }
+}
