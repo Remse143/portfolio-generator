@@ -3,22 +3,15 @@
 
 session_start();
 
-if (!isset($_SESSION['access_token'])) {
+if (!isset($_SESSION['access_token']) || !isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit;
 }
 
 require_once "config/database.php";
 
-$id = $_GET['id'] ?? null;
-$template = $_GET['template'] ?? null;
-
-if (!$id || !$template) {
-    die("Portfolio ID or template is missing.");
-}
-
-
-// ONLY ALLOW THESE TEMPLATES
+$id = $_GET['id'] ?? '';
+$template = $_GET['template'] ?? '';
 
 $allowedTemplates = [
     'simple',
@@ -26,69 +19,64 @@ $allowedTemplates = [
     'creative'
 ];
 
-if (!in_array($template, $allowedTemplates)) {
-    die("Invalid template.");
+if ($id === '' || !in_array($template, $allowedTemplates, true)) {
+    exit("Invalid portfolio ID or template.");
 }
 
-
 $userId = $_SESSION['user_id'];
-
-
-// UPDATE TEMPLATE
 
 $url = $supabaseUrl
     . "/rest/v1/portfolios?id=eq."
     . urlencode($id)
     . "&user_id=eq."
-    . urlencode($userId);
-
+    . urlencode($userId)
+    . "&select=id";
 
 $data = [
     "template" => $template
 ];
 
-
 $ch = curl_init($url);
 
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PATCH");
-
-curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-
-curl_setopt($ch, CURLOPT_HTTPHEADER, [
-    "Content-Type: application/json",
-    "apikey: " . $supabaseKey,
-    "Authorization: Bearer " . $_SESSION['access_token'],
-    "Prefer: return=representation"
+curl_setopt_array($ch, [
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => "PATCH",
+    CURLOPT_POSTFIELDS => json_encode($data),
+    CURLOPT_HTTPHEADER => [
+        "Content-Type: application/json",
+        "apikey: " . $supabaseKey,
+        "Authorization: Bearer " . $_SESSION['access_token'],
+        "Prefer: return=representation"
+    ]
 ]);
 
 $response = curl_exec($ch);
-
 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+$curlError = curl_error($ch);
 
 curl_close($ch);
 
-
-if ($httpCode >= 200 && $httpCode < 300) {
-
-    header("Location: preview.php?id=" . urlencode($id));
-
-    exit;
-
+if ($response === false) {
+    exit("Database connection failed: " . htmlspecialchars($curlError));
 }
 
+if ($httpCode < 200 || $httpCode >= 300) {
+    exit(
+        "Could not save the template. HTTP "
+        . $httpCode
+        . "<pre>"
+        . htmlspecialchars($response)
+        . "</pre><a href='templates.php'>Back to Templates</a>"
+    );
+}
 
-echo "<h1>Template Selection Error</h1>";
+$savedPortfolios = json_decode($response, true);
 
-echo "<p>The template could not be saved.</p>";
+if (!is_array($savedPortfolios) || count($savedPortfolios) === 0) {
+    exit("Portfolio not found, or you do not have permission to update it.");
+}
 
-echo "<p>HTTP Code: " . $httpCode . "</p>";
-
-echo "<pre>";
-echo htmlspecialchars($response);
-echo "</pre>";
-
-echo '<br><a href="templates.php">Back to Templates</a>';
-
+// Open the existing preview page with the selected portfolio.
+header("Location: preview.php?id=" . urlencode($id));
+exit;
 ?>

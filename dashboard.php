@@ -1,82 +1,59 @@
 
 <?php
-
 session_start();
 
 if (!isset($_SESSION['access_token'])) {
-
     header("Location: login.php");
-
     exit;
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Dashboard - PortfolioGen</title>
 
+    <!-- MAIN DASHBOARD DESIGN: IMPORTANT -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- ORIGINAL FOOTER DESIGN -->
+    <link rel="stylesheet" href="css/footer.css">
+
+    <!-- FONT AWESOME ICONS -->
     <link
         rel="stylesheet"
-        href="css/style.css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     >
-
-    <!-- EXISTING FOOTER DESIGN -->
-    <link
-        rel="stylesheet"
-        href="css/footer.css"
-    >
-
 </head>
 
 <body>
-
 
 <!-- =====================================================
      AKATSUKI-INSPIRED ANIMATED BACKGROUND
      ===================================================== -->
 
-<div class="animated-background">
+<div class="animated-background" aria-hidden="true">
 
     <div class="background-orb orb-one"></div>
-
     <div class="background-orb orb-two"></div>
-
     <div class="background-orb orb-three"></div>
-
     <div class="background-orb orb-four"></div>
 
     <div class="background-grid"></div>
 
-
     <div class="background-particle particle-one"></div>
-
     <div class="background-particle particle-two"></div>
-
     <div class="background-particle particle-three"></div>
-
     <div class="background-particle particle-four"></div>
-
     <div class="background-particle particle-five"></div>
-
     <div class="background-particle particle-six"></div>
-
     <div class="background-particle particle-seven"></div>
-
     <div class="background-particle particle-eight"></div>
 
 </div>
-
 
 <!-- =====================================================
      NAVIGATION
@@ -86,43 +63,23 @@ if (!isset($_SESSION['access_token'])) {
 
     <div class="container navbar-content">
 
-        <a
-            href="dashboard.php"
-            class="logo"
-        >
+        <a href="dashboard.php" class="logo">
             PortfolioGen
         </a>
 
-
         <div class="nav-links">
 
-            <a href="dashboard.php">
-                Dashboard
-            </a>
-
-            <a href="create.php">
-                Create Portfolio
-            </a>
-
-            <a href="manage.php">
-                My Portfolios
-            </a>
-
-            <a href="templates.php">
-                Templates
-            </a>
-
-            <a href="logout.php">
-                Logout
-            </a>
-
-
-            <!-- Theme Button -->
+            <a href="dashboard.php">Dashboard</a>
+            <a href="create.php">Create Portfolio</a>
+            <a href="manage.php">My Portfolios</a>
+            <a href="templates.php">Templates</a>
+            <a href="logout.php">Logout</a>
 
             <button
                 type="button"
                 id="themeToggle"
                 class="theme-toggle"
+                aria-label="Toggle dark mode"
             >
                 🌙
             </button>
@@ -132,7 +89,6 @@ if (!isset($_SESSION['access_token'])) {
     </div>
 
 </nav>
-
 
 <!-- =====================================================
      DASHBOARD HERO
@@ -159,17 +115,11 @@ if (!isset($_SESSION['access_token'])) {
 
         <div class="hero-buttons">
 
-            <a
-                href="create.php"
-                class="btn btn-primary"
-            >
+            <a href="create.php" class="btn btn-primary">
                 Create Portfolio
             </a>
 
-            <a
-                href="manage.php"
-                class="btn btn-secondary"
-            >
+            <a href="manage.php" class="btn btn-secondary">
                 My Portfolios
             </a>
 
@@ -178,7 +128,6 @@ if (!isset($_SESSION['access_token'])) {
     </div>
 
 </section>
-
 
 <!-- =====================================================
      PORTFOLIO MANAGEMENT
@@ -194,9 +143,7 @@ if (!isset($_SESSION['access_token'])) {
                 Portfolio Management
             </span>
 
-            <h2>
-                Everything You Need
-            </h2>
+            <h2>Everything You Need</h2>
 
             <p>
                 Build, customize, and manage your professional
@@ -205,23 +152,13 @@ if (!isset($_SESSION['access_token'])) {
 
         </div>
 
-
         <div class="card-grid">
-
-
-            <!-- =================================================
-                 CREATE PORTFOLIO
-                 ================================================= -->
 
             <div class="card">
 
-                <div class="card-icon">
-                    ➕
-                </div>
+                <div class="card-icon">➕</div>
 
-                <h3>
-                    Create Portfolio
-                </h3>
+                <h3>Create Portfolio</h3>
 
                 <p>
                     Start building your portfolio by entering
@@ -230,29 +167,17 @@ if (!isset($_SESSION['access_token'])) {
                     other professional details.
                 </p>
 
-                <a
-                    href="create.php"
-                    class="btn btn-primary"
-                >
+                <a href="create.php" class="btn btn-primary">
                     Create Portfolio
                 </a>
 
             </div>
 
-
-            <!-- =================================================
-                 CHOOSE TEMPLATE
-                 ================================================= -->
-
             <div class="card">
 
-                <div class="card-icon">
-                    🎨
-                </div>
+                <div class="card-icon">🎨</div>
 
-                <h3>
-                    Choose Template
-                </h3>
+                <h3>Choose Template</h3>
 
                 <p>
                     Select a portfolio design that matches
@@ -260,29 +185,17 @@ if (!isset($_SESSION['access_token'])) {
                     and Creative templates for your portfolio.
                 </p>
 
-                <a
-                    href="templates.php"
-                    class="btn btn-primary"
-                >
+                <a href="templates.php" class="btn btn-primary">
                     View Templates
                 </a>
 
             </div>
 
-
-            <!-- =================================================
-                 MANAGE PORTFOLIOS
-                 ================================================= -->
-
             <div class="card">
 
-                <div class="card-icon">
-                    📁
-                </div>
+                <div class="card-icon">📁</div>
 
-                <h3>
-                    Manage Portfolios
-                </h3>
+                <h3>Manage Portfolios</h3>
 
                 <p>
                     View your saved portfolios, update your
@@ -290,22 +203,17 @@ if (!isset($_SESSION['access_token'])) {
                     or delete portfolios that you no longer need.
                 </p>
 
-                <a
-                    href="manage.php"
-                    class="btn btn-primary"
-                >
+                <a href="manage.php" class="btn btn-primary">
                     Manage Portfolios
                 </a>
 
             </div>
-
 
         </div>
 
     </div>
 
 </section>
-
 
 <!-- =====================================================
      HOW IT WORKS
@@ -317,13 +225,9 @@ if (!isset($_SESSION['access_token'])) {
 
         <div class="section-header">
 
-            <span class="hero-badge">
-                How It Works
-            </span>
+            <span class="hero-badge">How It Works</span>
 
-            <h2>
-                Create Your Portfolio in 3 Easy Steps
-            </h2>
+            <h2>Create Your Portfolio in 3 Easy Steps</h2>
 
             <p>
                 Follow these simple steps to create your
@@ -332,21 +236,13 @@ if (!isset($_SESSION['access_token'])) {
 
         </div>
 
-
         <div class="card-grid">
-
-
-            <!-- STEP 1 -->
 
             <div class="card">
 
-                <div class="card-icon">
-                    1
-                </div>
+                <div class="card-icon">1</div>
 
-                <h3>
-                    Enter Your Information
-                </h3>
+                <h3>Enter Your Information</h3>
 
                 <p>
                     Add your name, profile picture, contact
@@ -356,18 +252,11 @@ if (!isset($_SESSION['access_token'])) {
 
             </div>
 
-
-            <!-- STEP 2 -->
-
             <div class="card">
 
-                <div class="card-icon">
-                    2
-                </div>
+                <div class="card-icon">2</div>
 
-                <h3>
-                    Choose a Template
-                </h3>
+                <h3>Choose a Template</h3>
 
                 <p>
                     Select from three different portfolio
@@ -377,18 +266,11 @@ if (!isset($_SESSION['access_token'])) {
 
             </div>
 
-
-            <!-- STEP 3 -->
-
             <div class="card">
 
-                <div class="card-icon">
-                    3
-                </div>
+                <div class="card-icon">3</div>
 
-                <h3>
-                    Generate Your Portfolio
-                </h3>
+                <h3>Generate Your Portfolio</h3>
 
                 <p>
                     Preview your information in your selected
@@ -398,13 +280,11 @@ if (!isset($_SESSION['access_token'])) {
 
             </div>
 
-
         </div>
 
     </div>
 
 </section>
-
 
 <!-- =====================================================
      PORTFOLIO BENEFITS
@@ -416,13 +296,9 @@ if (!isset($_SESSION['access_token'])) {
 
         <div class="section-header">
 
-            <span class="hero-badge">
-                Why PortfolioGen?
-            </span>
+            <span class="hero-badge">Why PortfolioGen?</span>
 
-            <h2>
-                Build Your Online Presence
-            </h2>
+            <h2>Build Your Online Presence</h2>
 
             <p>
                 PortfolioGen helps you present your skills,
@@ -432,21 +308,13 @@ if (!isset($_SESSION['access_token'])) {
 
         </div>
 
-
         <div class="card-grid">
-
-
-            <!-- BENEFIT 1 -->
 
             <div class="card">
 
-                <div class="card-icon">
-                    💼
-                </div>
+                <div class="card-icon">💼</div>
 
-                <h3>
-                    Professional Presentation
-                </h3>
+                <h3>Professional Presentation</h3>
 
                 <p>
                     Present your skills, projects, education,
@@ -456,18 +324,11 @@ if (!isset($_SESSION['access_token'])) {
 
             </div>
 
-
-            <!-- BENEFIT 2 -->
-
             <div class="card">
 
-                <div class="card-icon">
-                    ☁️
-                </div>
+                <div class="card-icon">☁️</div>
 
-                <h3>
-                    Online Storage
-                </h3>
+                <h3>Online Storage</h3>
 
                 <p>
                     Your portfolio information is stored
@@ -477,18 +338,11 @@ if (!isset($_SESSION['access_token'])) {
 
             </div>
 
-
-            <!-- BENEFIT 3 -->
-
             <div class="card">
 
-                <div class="card-icon">
-                    📱
-                </div>
+                <div class="card-icon">📱</div>
 
-                <h3>
-                    Responsive Design
-                </h3>
+                <h3>Responsive Design</h3>
 
                 <p>
                     Your portfolio is designed to work across
@@ -497,13 +351,11 @@ if (!isset($_SESSION['access_token'])) {
 
             </div>
 
-
         </div>
 
     </div>
 
 </section>
-
 
 <!-- =====================================================
      FINAL CALL TO ACTION
@@ -515,23 +367,16 @@ if (!isset($_SESSION['access_token'])) {
 
         <div class="cta">
 
-            <span class="hero-badge">
-                Ready to Start?
-            </span>
+            <span class="hero-badge">Ready to Start?</span>
 
-            <h2>
-                Create Your Professional Portfolio Today
-            </h2>
+            <h2>Create Your Professional Portfolio Today</h2>
 
             <p>
                 Showcase your skills, projects, education,
                 and experience with PortfolioGen.
             </p>
 
-            <a
-                href="create.php"
-                class="btn btn-primary"
-            >
+            <a href="create.php" class="btn btn-primary">
                 Start Creating
             </a>
 
@@ -541,21 +386,17 @@ if (!isset($_SESSION['access_token'])) {
 
 </section>
 
-
 <!-- =====================================================
-     FOOTER
+     SHARED FOOTER: INCLUDE ONLY ONCE
      ===================================================== -->
 
-<?php include 'footer.php'; ?>
-
+<?php require_once __DIR__ . '/footer.php'; ?>
 
 <!-- =====================================================
-     JAVASCRIPT
+     WEBSITE JAVASCRIPT
      ===================================================== -->
 
-<script src="js/script.js"></script>
-
+<script src="js/script.js" defer></script>
 
 </body>
-
 </html>
