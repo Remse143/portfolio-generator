@@ -1,6 +1,21 @@
 
+<?php
+// PortfolioGen shared footer
+?>
+
+<!-- Footer icons -->
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    referrerpolicy="no-referrer"
+/>
+
+<!-- Footer stylesheet -->
+<link rel="stylesheet" href="css/footer.css?v=5">
+
 <footer class="site-footer">
-    <!-- Animated background -->
+
+    <!-- Animated Background -->
     <div class="footer-live-bg" aria-hidden="true">
         <div class="footer-orb footer-orb-red"></div>
         <div class="footer-orb footer-orb-purple"></div>
@@ -77,7 +92,6 @@
                         </a>
                     </div>
                 </li>
-
                 <li>
                     <span class="footer-icon">
                         <i class="fa-solid fa-phone" aria-hidden="true"></i>
@@ -99,33 +113,27 @@
             </p>
 
             <div class="footer-socials">
-                <a
-                    href="https://www.facebook.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Facebook"
-                    title="Facebook"
-                >
+                <a href="https://www.facebook.com/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Facebook"
+                   title="Facebook">
                     <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
                 </a>
 
-                <a
-                    href="https://www.instagram.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Instagram"
-                    title="Instagram"
-                >
+                <a href="https://www.instagram.com/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Instagram"
+                   title="Instagram">
                     <i class="fa-brands fa-instagram" aria-hidden="true"></i>
                 </a>
 
-                <a
-                    href="https://github.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub"
-                    title="GitHub"
-                >
+                <a href="https://github.com/"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="GitHub"
+                   title="GitHub">
                     <i class="fa-brands fa-github" aria-hidden="true"></i>
                 </a>
             </div>
@@ -137,25 +145,32 @@
 
         <!-- Creators -->
         <div class="footer-creators">
+
             <div class="creator-heading">
-                <span class="creator-eyebrow">THE PEOPLE BEHIND THE PROJECT</span>
+                <span class="creator-eyebrow">
+                    THE PEOPLE BEHIND THE PROJECT
+                </span>
+
                 <h3>Meet the <span>Creators</span></h3>
-                <p>A team working together to bring PortfolioGen to life.</p>
+
+                <p>
+                    A team working together to bring PortfolioGen to life.
+                </p>
             </div>
 
+            <!-- Main Creator -->
             <div class="main-creator-card">
-                <div class="creator-avatar main-avatar" aria-hidden="true">
-                    <i class="fa-solid fa-crown"></i>
+                <div class="creator-avatar main-avatar">
+                    <i class="fa-solid fa-crown" aria-hidden="true"></i>
                 </div>
 
                 <div class="creator-information">
                     <span class="creator-role">MAIN CREATOR</span>
-                    <a
-                        class="creator-name"
-                        href="https://www.facebook.com/share/19fLgz9E1i/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
+
+                    <a class="creator-name"
+                       href="https://www.facebook.com/share/19fLgz9E1i/"
+                       target="_blank"
+                       rel="noopener noreferrer">
                         REMSERT C. SIBAY
                         <i class="fa-solid fa-arrow-up-right-from-square"
                            aria-hidden="true"></i>
@@ -165,6 +180,7 @@
                 <span class="creator-badge">LEAD</span>
             </div>
 
+            <!-- Co-Creators -->
             <div class="creator-subheading">
                 <span class="creator-role">CO-CREATORS</span>
                 <span class="creator-line"></span>
@@ -174,7 +190,8 @@
 
                 <a class="creator-card"
                    href="https://www.facebook.com/share/1DZBQsQJdY/"
-                   target="_blank" rel="noopener noreferrer">
+                   target="_blank"
+                   rel="noopener noreferrer">
                     <span class="creator-avatar">
                         <i class="fa-solid fa-user" aria-hidden="true"></i>
                     </span>
@@ -185,7 +202,8 @@
 
                 <a class="creator-card"
                    href="https://www.facebook.com/share/1CDQei3Sci/"
-                   target="_blank" rel="noopener noreferrer">
+                   target="_blank"
+                   rel="noopener noreferrer">
                     <span class="creator-avatar">
                         <i class="fa-solid fa-user" aria-hidden="true"></i>
                     </span>
@@ -195,8 +213,9 @@
                 </a>
 
                 <a class="creator-card"
-                   href="https://www.facebook.com/share/1DQKiWwAy2//"
-                   target="_blank" rel="noopener noreferrer">
+                   href="https://www.facebook.com/share/1DQKiWwAy2/"
+                   target="_blank"
+                   rel="noopener noreferrer">
                     <span class="creator-avatar">
                         <i class="fa-solid fa-user" aria-hidden="true"></i>
                     </span>
@@ -207,7 +226,8 @@
 
                 <a class="creator-card"
                    href="https://www.facebook.com/share/1BzSbfHmvV/"
-                   target="_blank" rel="noopener noreferrer">
+                   target="_blank"
+                   rel="noopener noreferrer">
                     <span class="creator-avatar">
                         <i class="fa-solid fa-user" aria-hidden="true"></i>
                     </span>
@@ -218,7 +238,8 @@
 
                 <a class="creator-card"
                    href="https://www.facebook.com/share/19cCq6mrTh/"
-                   target="_blank" rel="noopener noreferrer">
+                   target="_blank"
+                   rel="noopener noreferrer">
                     <span class="creator-avatar">
                         <i class="fa-solid fa-user" aria-hidden="true"></i>
                     </span>
@@ -229,6 +250,7 @@
 
             </div>
         </div>
+
     </div>
 
     <!-- Copyright -->
@@ -236,7 +258,7 @@
         <div class="footer-bottom-line"></div>
 
         <p>
-            &copy; <?php echo date('Y'); ?>
+            &copy; <?= date('Y') ?>
             <span>PortfolioGen</span>. All rights reserved.
         </p>
 
@@ -244,14 +266,7 @@
             Designed with creativity and passion.
         </p>
     </div>
+
 </footer>
 
-<!-- Load Font Awesome icons if your project does not already load them -->
-<link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
->
-
 <script src="js/footer.js" defer></script>
-</body>
-</html>

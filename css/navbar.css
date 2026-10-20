@@ -1,0 +1,127 @@
+
+/* =====================================================
+   PORTFOLIOGEN — SHARED NAVIGATION
+   Matches the Manage Portfolio navbar design
+   ===================================================== */
+
+.mg-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    background: rgba(8, 7, 13, 0.90);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mg-nav-inner {
+    width: min(1250px, 92%);
+    min-height: 76px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.mg-logo {
+    flex-shrink: 0;
+    color: #fff;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.mg-logo span {
+    color: #e11d48;
+}
+
+.mg-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.mg-nav-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 13px;
+    color: #a1a1aa;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 9px;
+    transition: color 0.25s ease, background 0.25s ease;
+}
+
+.mg-nav-links a:hover,
+.mg-nav-links a.active {
+    color: #fff;
+    background: rgba(225, 29, 72, 0.11);
+}
+
+.mg-nav-links a.active {
+    box-shadow: inset 0 -2px #e11d48;
+}
+
+.mg-nav-links .mg-logout {
+    color: #fda4af;
+    border: 1px solid rgba(225, 29, 72, 0.25);
+}
+
+.mg-nav-links .mg-logout:hover {
+    background: #9f1239;
+    color: #fff;
+}
+
+/* Keyboard accessibility */
+.mg-nav-links a:focus-visible,
+.mg-logo:focus-visible {
+    outline: 2px solid #e11d48;
+    outline-offset: 4px;
+}
+
+/* Tablet and mobile */
+@media (max-width: 850px) {
+    .mg-nav-inner {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 15px 0;
+        gap: 12px;
+    }
+
+    .mg-logo {
+        width: 100%;
+        text-align: center;
+    }
+
+    .mg-nav-links {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .mg-nav-links a {
+        padding: 9px 10px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mg-nav-inner {
+        width: 96%;
+    }
+
+    .mg-nav-links {
+        gap: 4px;
+    }
+
+    .mg-nav-links a {
+        gap: 5px;
+        padding: 9px 8px;
+        font-size: 11px;
+    }
+}

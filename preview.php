@@ -139,6 +139,34 @@ $portfolioName = htmlspecialchars(
 );
 ?>
 
+
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+/*
+|--------------------------------------------------------------------------
+| PortfolioGen Preview Page
+|--------------------------------------------------------------------------
+| Keep your existing portfolio-loading code above this HTML.
+| These variables must already be set by your existing PHP logic:
+| $portfolioId, $templateFile
+|--------------------------------------------------------------------------
+*/
+
+// Validate that the template file exists before including it.
+if (
+    !isset($templateFile) ||
+    !is_string($templateFile) ||
+    !is_file($templateFile)
+) {
+    http_response_code(500);
+    exit('Template file not found. Please check your portfolio template selection.');
+}
+
+$portfolioId = isset($portfolioId) ? (int) $portfolioId : 0;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -151,6 +179,101 @@ $portfolioName = htmlspecialchars(
     <link rel="stylesheet" href="css/footer.css">
 
     <style>
+        /* =========================================
+           PREVIEW PAGE NAVIGATION
+           ========================================= */
+
+        .pg-preview-navbar {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            min-height: 65px;
+            box-sizing: border-box;
+            z-index: 99999 !important;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+
+            padding: 12px 5%;
+            background: rgba(7, 6, 15, 0.96);
+            border-bottom: 1px solid rgba(225, 29, 72, 0.35);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(14px);
+        }
+
+        .pg-preview-brand {
+            color: #fff;
+            text-decoration: none;
+            font-size: 21px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .pg-preview-brand span {
+            color: #e11d48;
+        }
+
+        .pg-preview-links {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .pg-preview-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 9px 13px;
+            border-radius: 8px;
+            color: #e4e4e7;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .pg-preview-links a:hover {
+            background: rgba(225, 29, 72, 0.16);
+            color: #fb7185;
+        }
+
+        /* Prevent page content from being hidden behind navbar */
+        body {
+            padding-top: 85px !important;
+        }
+
+        html {
+            scroll-padding-top: 90px;
+            scroll-behavior: smooth;
+        }
+
+        /* =========================================
+           PREVIEW CONTENT
+           ========================================= */
+
+        .preview-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .preview-heading {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .preview-heading h1 {
+            margin-bottom: 8px;
+        }
+
         .preview-actions {
             display: flex;
             flex-wrap: wrap;
@@ -167,8 +290,10 @@ $portfolioName = htmlspecialchars(
             align-items: center;
             gap: 8px;
             padding: 12px 20px;
-            border: none;
+            border: 1px solid rgba(225, 29, 72, 0.25);
             border-radius: 8px;
+            background: #18131e;
+            color: #fff;
             text-decoration: none;
             cursor: pointer;
             font-weight: 600;
@@ -180,28 +305,56 @@ $portfolioName = htmlspecialchars(
             opacity: 0.9;
         }
 
-        .download-zip-btn {
+        .preview-actions .download-zip-btn {
             background: linear-gradient(135deg, #e11d48, #9f1239);
             color: #fff;
         }
 
-        .preview-container {
+        .portfolio-preview-container {
             width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            min-width: 0;
         }
 
-        .preview-heading {
-            text-align: center;
-            margin: 25px 0;
+        /* Keep template content within the available viewport */
+        .portfolio-preview-container > .generated-portfolio {
+            max-width: 100%;
         }
 
-        .preview-heading h1 {
-            margin-bottom: 8px;
-        }
+        /* =========================================
+           RESPONSIVE NAVIGATION
+           ========================================= */
 
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
+            .pg-preview-navbar {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 8px;
+                padding: 10px 15px;
+            }
+
+            .pg-preview-brand {
+                font-size: 19px;
+            }
+
+            .pg-preview-links {
+                width: 100%;
+                justify-content: flex-start;
+                gap: 5px;
+            }
+
+            .pg-preview-links a {
+                padding: 7px 9px;
+                font-size: 12px;
+            }
+
+            body {
+                padding-top: 115px !important;
+            }
+
+            .preview-container {
+                padding: 10px;
+            }
+
             .preview-actions {
                 flex-direction: column;
             }
@@ -209,16 +362,36 @@ $portfolioName = htmlspecialchars(
             .preview-actions .btn {
                 width: 100%;
                 max-width: 320px;
+                box-sizing: border-box;
             }
+        }
 
-            .preview-container {
-                padding: 10px;
+        @media (max-width: 380px) {
+            .pg-preview-links a {
+                padding: 6px;
+                font-size: 11px;
             }
         }
     </style>
 </head>
 
 <body>
+
+    <!-- FIXED PREVIEW NAVBAR -->
+    <nav class="pg-preview-navbar" aria-label="Preview navigation">
+
+        <a href="index.php" class="pg-preview-brand">
+            Portfolio<span>Gen</span>
+        </a>
+
+        <div class="pg-preview-links">
+            <a href="index.php">Home</a>
+            <a href="dashboard.php">Dashboard</a>
+            <a href="templates.php">Templates</a>
+            <a href="manage.php">My Portfolios</a>
+        </div>
+
+    </nav>
 
     <main class="preview-container">
 
@@ -229,13 +402,11 @@ $portfolioName = htmlspecialchars(
 
         <div class="preview-actions">
 
-            <a href="templates.php"
-               class="btn">
+            <a href="templates.php" class="btn">
                 Change Template
             </a>
 
-            <a href="edit.php?id=<?= $portfolioId ?>"
-               class="btn">
+            <a href="edit.php?id=<?= $portfolioId ?>" class="btn">
                 Edit Portfolio
             </a>
 
@@ -244,18 +415,14 @@ $portfolioName = htmlspecialchars(
                 Download ZIP
             </a>
 
-            <a href="manage.php"
-               class="btn">
+            <a href="manage.php" class="btn">
                 Back to My Portfolios
             </a>
 
         </div>
 
         <section class="portfolio-preview-container">
-            <?php
-            // Render the selected portfolio template.
-            include $templateFile;
-            ?>
+            <?php include $templateFile; ?>
         </section>
 
         <div class="preview-actions">
